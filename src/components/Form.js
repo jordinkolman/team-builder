@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 export default function MemberForm({ list, setList, memberToEdit, setMemberToEdit, editMember }) {
     const [member, setMember] = useState({ name: '', email: '', role: ''});
+
    
     useEffect(() => {
         if (memberToEdit) {
@@ -13,10 +14,6 @@ export default function MemberForm({ list, setList, memberToEdit, setMemberToEdi
     function handleChange(event) {
         const updatedMember= {...member, [event.target.name]: event.target.value};
         setMember(updatedMember);
-    }
-
-    const addPerson = () => {
-        setMemberList([...memberList, member])
     }
 
     function handleSubmit(event) {
@@ -83,7 +80,7 @@ export default function MemberForm({ list, setList, memberToEdit, setMemberToEdi
                         />
                     </div>
                 </div>
-                <button onClick={addPerson} type='submit' className='btn btn-primary'>
+                <button type='submit' className='btn btn-primary'>
                     Submit
                 </button>
             </fieldset>
